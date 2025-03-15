@@ -40,6 +40,10 @@ public class Board {
         return true;
     }//end of placeship
 
+    public char[][] getShipboard() {
+        return shipboard;
+    }//end of getter
+
 
     public int getSize() {
         return size;

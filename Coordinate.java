@@ -1,11 +1,8 @@
 public class Coordinate {
 
-    int x ;
-    int y ;
-
-    public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+    String coor;
+    public Coordinate(String coor ) {
+        this.coor = coor;
     }//end of constructor
 
     public static boolean isValidCoordinate(String input) {
@@ -15,14 +12,11 @@ public class Coordinate {
         return (col >= 'A' && col <= 'J') && (row >= '0' && row <= '9');
     }//end of isvalidcoordinate
 
-    public void coorxy(String input) {
+    public int [] coorxy(String input ) {
         char[] ch = input.toCharArray();
-        int col = (int) ch[0];
-        col = col - 65;
-        int row = (int) ch[1];
-        row = row - 48;
-        x = col ;
-        y = row;
+        int col =ch[0] - 'A';
+        int row =ch[1] - '0';
+        return  new int [] {col , row};
     }//end of coorxy
 
 }//end of class coordinate
