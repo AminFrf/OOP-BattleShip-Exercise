@@ -1,7 +1,10 @@
 import java.sql.SQLOutput;
+import java.util.Scanner;
 
 public  class Main {
     public static void main(String[] args) {
+        boolean sizeofboard = false ;
+        Scanner input = new Scanner(System.in);
         System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⡿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⡇⠙⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -41,5 +44,17 @@ public  class Main {
         System.out.println();
         System.out.println("WELCOME TO BATTLESHIP!");
         System.out.println("PRESS THE ENTER BUTTON TO START THE GAME!");
-    }
-}
+        input.nextLine();
+        System.out.println("PLEASE ENTER THE SIZE BOARD (MIN = 5 && MAX = 26) : ");
+        int size = 0 ;
+        while(!sizeofboard) {
+            size = input.nextInt();
+            if(size<5 || size>26) {
+                System.out.println("WRONG SIZE BOARD!");
+                sizeofboard = false;
+            }//end of if
+        }//end of while
+        Board shipboard = new Board(size);
+        Board trackingboard = new Board(size);
+    }//end of main
+}//end of class Main
