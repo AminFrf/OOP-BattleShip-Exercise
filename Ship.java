@@ -16,6 +16,17 @@ public class Ship {
         this.position = position;
     }//end of setposition
 
+    public static boolean allshipssunk(char [][] board){
+        for (int i = 0; i < board.length ; i++) {
+            for (int j = 0; j < board.length; j++) {
+                if(board[i][j] == '#' ||  board[i][j] == '@'){
+                    return false;
+                }//end of if
+            }//end of nested for
+        }//end of for
+        return true;
+    }//end of allshipssunk
+
     public boolean IsSunk(){
         if(size == hitcount){
             return true;
@@ -42,5 +53,8 @@ public class Ship {
 
     public int getSize(){
         return size;
-    }
+    }//end of getter
+    public void setSize(int size){
+        this.size = size;
+    }//end of setter
 }//end of class ship
