@@ -16,23 +16,23 @@ public class Game {
     }//end of isgameover
 
     private boolean askReplay() {
-        System.out.println("Play again? (yes/no)");
+        System.out.println("PLAY AGAIN? (YES/NO)");
         Scanner scanner = new Scanner(System.in);
-        return scanner.next().equalsIgnoreCase("yes");
+        return scanner.next().equalsIgnoreCase("YES");
     }//end of askreplay
 
     private void playGame(Player p1, Player p2) {
-        System.out.println("Game logic here...");
+        System.out.println("GAME LOGIC HERE...");
         boolean player1turn = true ;
         while(!isgameover(p1.getShipboard().getBoardArray(), p2.getShipboard().getBoardArray())) {
         if(player1turn){
             System.out.println("PLAYER 1'S TURN : ");
-            Board.printboard(p2.getAttackingBoard().getBoardArray());
+            Board.printboard(p1.getAttackingBoard().getBoardArray());
             p1.attack(p2);
         }//end of if
             else{
                 System.out.println("PLAYER 2'S TURN : ");
-                Board.printboard(p1.getAttackingBoard().getBoardArray());
+                Board.printboard(p2.getAttackingBoard().getBoardArray());
                 p2.attack(p1);
         }//end of else
             player1turn = !player1turn;

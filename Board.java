@@ -12,7 +12,7 @@ public class Board {
     public Board(int size) {
         this.ships = new Ship[(size/2)-1];
         this.size = size;
-        this.shipCount = (size/2)-1 ;
+        this.shipCount = 0;
         this.shipboard = new char[size][size];
         this.trackingboard = new char[size][size];
         for (int i = 0; i < ships.length ; i++) {
@@ -28,20 +28,37 @@ public class Board {
 
 
     public boolean placeShip(Ship ship, int row, int col, boolean horizontal) {
-        int size = ship.getSize();
-        int [][] position = new int [size][2];
+        int shipsize = ship.getSize();
+        int [][] position = new int [shipsize][2];
+
+        if( ((row+1)<size && (shipboard[row+1][col]=='#' ||  shipboard[row+1][col]=='@')) || ((row-1)>=0 && (shipboard[row-1][col]=='#' ||  shipboard[row-1][col]=='@'))) {
+            return false;
+        }//end of if
+        if( ((col+1)<size && (shipboard[row][col+1]=='#' ||  shipboard[row][col+1]=='@')) || ((col-1)>=0 && (shipboard[row][col-1]=='#' ||  shipboard[row][col-1]=='@'))){
+            return false;
+        }//end of if
+
+
+
         if(horizontal){
-            for(int i = 0; i < size; i++){
+            if((col + shipsize)>size){
+                return false;
+            }//end of if
+            for(int i = 0; i < shipsize; i++){
                 if(shipboard[row][col] != '~'){
                     return false;
                 }//end of if
+
                 position[i][0] = row;
                 position[i][1] = col;
                 col++;
             }//end of for
         }//end of if
         else{
-            for(int i = 0; i < size; i++){
+            if((row + shipsize)>size){
+                return false;
+            }//end of if
+            for(int i = 0; i < shipsize; i++){
                 if(shipboard[row][col] != '~'){
                     return false;
                 }//end of if
@@ -50,6 +67,7 @@ public class Board {
                 row++;
             }//end of for
         }//end of else
+
         ship.setPosition(position);
         ships[shipCount] =  ship;
         shipCount++;
@@ -63,11 +81,24 @@ public class Board {
     }//end of shipposition
 
     public static void printboard (char [][] board){
+        int rownum = 0 ;
+        char colnum  ;
+        System.out.print("   ");
+        for (int i = 65 ; i <(board.length+65); i++) {
+            colnum = (char)i;
+            System.out.print(colnum + " ");
+        }
+        System.out.println();
         for (int i = 0; i < board.length ; i++) {
+            if(i<10){
+                System.out.print(" ");
+            }//end of if
+            System.out.print(rownum + " ");
             for (int j = 0; j < board.length ; j++) {
-                System.out.println(board[i][j] + " ");
+                System.out.print(board[i][j] + " ");
             }//end of nested for
             System.out.println();
+            rownum++;
         }//end of first for
     }//end of printboard
 

@@ -217,6 +217,12 @@ public  class Main {
             System.out.println();
             System.out.println();
 
+
+            Board.printboard(p1.getShipboard().getShipboard());
+            System.out.println();
+            System.out.println();
+            Board.printboard(p2.getShipboard().getShipboard());
+
             Game game = new Game() ;
             game.start(p1 , p2 );
         }//end of else
