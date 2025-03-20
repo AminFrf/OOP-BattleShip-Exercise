@@ -30,9 +30,16 @@ public class Player {
         System.out.println("PLEASE ENTER YOUR TARGET (FOR EXAMPLE A5): ");
         String input = scanner.next();
         Coordinate coor = new Coordinate(input);
+        boolean nvl = Coordinate.isValidCoordinate(input , opponent.getBoardsize());
+        while (!nvl) {
+            System.out.println("WRONG INPUT !!! ");
+            System.out.println("PLEASE TRY AGAIN : ");
+            input = scanner.next();
+            nvl = Coordinate.isValidCoordinate(input , opponent.getBoardsize());
+        }//end of while
         int[] xy = coor.coorxy(input);
-        int row = xy[0];
-        int col = xy[1];
+        int row = xy[1];
+        int col = xy[0];
 
         char[][] opponentShipboard = opponent.getShipboard().getShipboard();
         char[][] myTrackingBoard = this.attackingBoard.getShipboard();

@@ -31,14 +31,14 @@ public class Board {
         int shipsize = ship.getSize();
         int [][] position = new int [shipsize][2];
 
-        if( ((row+1)<size && (shipboard[row+1][col]=='#' ||  shipboard[row+1][col]=='@')) || ((row-1)>=0 && (shipboard[row-1][col]=='#' ||  shipboard[row-1][col]=='@'))) {
-            return false;
-        }//end of if
-        if( ((col+1)<size && (shipboard[row][col+1]=='#' ||  shipboard[row][col+1]=='@')) || ((col-1)>=0 && (shipboard[row][col-1]=='#' ||  shipboard[row][col-1]=='@'))){
-            return false;
-        }//end of if
 
+            if (((row + 1) < size && (shipboard[row + 1][col] == '#' || shipboard[row + 1][col] == '@')) || ((row - 1) >= 0 && (shipboard[row - 1][col] == '#' || shipboard[row - 1][col] == '@'))) {
+                return false;
+            }//end of if
 
+            if (((col + 1) < size && (shipboard[row][col + 1] == '#' || shipboard[row][col + 1] == '@')) || ((col - 1) >= 0 && (shipboard[row][col - 1] == '#' || shipboard[row][col - 1] == '@'))) {
+                return false;
+            }//end of if
 
         if(horizontal){
             if((col + shipsize)>size){
@@ -49,10 +49,12 @@ public class Board {
                     return false;
                 }//end of if
 
+
                 position[i][0] = row;
                 position[i][1] = col;
                 col++;
             }//end of for
+
         }//end of if
         else{
             if((row + shipsize)>size){

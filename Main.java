@@ -73,6 +73,7 @@ public  class Main {
 
         System.out.print("PLEASE ENTER THE SIZE BOARD (MIN = 5 && MAX = 26) : ");
 
+
         int size = 0 ;
         while(!sizeofboard) {
             size = input.nextInt();
@@ -86,6 +87,7 @@ public  class Main {
             }//end of else
         }//end of while
 
+        System.out.println("EACH PLAYER WILL HAVE " +(size/2 - 1 )+" SHIPS");
         System.out.println();
         System.out.println();
         Player p1 ;
@@ -169,6 +171,10 @@ public  class Main {
                 }//end of for
             }//end of if
             else{
+                System.out.println();
+                System.out.println("YOU SHOULD PLACE " + (p1.getBoardsize()/2 - 1 )+ " SHIPS");
+                System.out.println("BETTER BE CAREFUL NOT TO LET YOUR OPPONENT SEE ;D ");
+                System.out.println();
                 for (int i = 0; i <(p1.getBoardsize()/2)-1 ; i++) {
                     p1.shipboard.ships[i].setSize(i+2);
                 }//end of for
@@ -225,6 +231,7 @@ public  class Main {
 
             Game game = new Game() ;
             game.start(p1 , p2 );
+
         }//end of else
     }//end of main
 }//end of class Main
