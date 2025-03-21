@@ -27,7 +27,7 @@ public class Player {
 
     public void attack(Player opponent) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("PLEASE ENTER YOUR TARGET (FOR EXAMPLE A5): ");
+        System.out.print("PLEASE ENTER YOUR TARGET (FOR EXAMPLE A5): ");
         String input = scanner.next();
         Coordinate coor = new Coordinate(input);
         boolean nvl = Coordinate.isValidCoordinate(input , opponent.getBoardsize());
@@ -47,10 +47,16 @@ public class Player {
         if (opponentShipboard[row][col] == '~') {
             myTrackingBoard[row][col] = 'O';
             System.out.println("MISS");
-        } else if (opponentShipboard[row][col] == '#' || opponentShipboard[row][col] == '@') {
+        }//end of if
+        else if (opponentShipboard[row][col] == '#' || opponentShipboard[row][col] == '@') {
             opponentShipboard[row][col] = '*';
             myTrackingBoard[row][col] = 'X';
             System.out.println("HIT!!!");
-        }
-    }
-}
+        }// end of else if
+        else if  (myTrackingBoard[row][col] == 'X' || myTrackingBoard[row][col] == 'O') {
+            System.out.println("DUPLICATE COORDINATES!!!");
+            System.out.println("YOU LOST YOUR TURN :( ");
+            System.out.println();
+        }//end of else
+    }//end of attack
+}//end of class player

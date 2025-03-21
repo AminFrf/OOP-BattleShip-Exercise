@@ -45,7 +45,8 @@ public  class Main {
         System.out.println("WELCOME TO BATTLESHIP!");
         System.out.print("PRESS THE ENTER BUTTON TO START THE GAME!");
         input.nextLine();
-
+        System.out.println();
+        System.out.println();
         System.out.println("1.SINGLE_PLAYER GAME");
         System.out.println("2.TWO_PLAYER GAME");
         boolean wrongchoice = false ;
@@ -87,7 +88,10 @@ public  class Main {
             }//end of else
         }//end of while
 
-        System.out.println("EACH PLAYER WILL HAVE " +(size/2 - 1 )+" SHIPS");
+        System.out.println();
+        System.out.println("********************************");
+        System.out.println("  EACH PLAYER WILL HAVE " +(size/2 - 1 )+" SHIPS");
+        System.out.println("********************************");
         System.out.println();
         System.out.println();
         Player p1 ;
@@ -117,6 +121,14 @@ public  class Main {
                 }//end of else
             }//end of while
 
+
+            for (int i = 0; i <(aip2.getBoardsize()/2)-1 ; i++) {
+                aip2.shipboard.ships[i].setSize(i+2);
+            }//end of for
+            for (int i = 0; i < (aip2.getBoardsize()/2)-1; i++) {
+                ShipPlacer.placeShipRandomly(aip2.getShipboard() , aip2.shipboard.ships[i]  );
+            }//end of for
+
             if(choice2 == 1) {
                 for (int i = 0; i <(p1.getBoardsize()/2)-1 ; i++) {
                     p1.shipboard.ships[i].setSize(i+2);
@@ -138,7 +150,7 @@ public  class Main {
             System.out.println();
 
             Game game = new Game() ;
-            game.start(p1,aip2);
+            game.aistart(p1,aip2);
         }//end of if
         else if(choice == 2) {
 
@@ -172,7 +184,10 @@ public  class Main {
             }//end of if
             else{
                 System.out.println();
+                System.out.println("********************************");
                 System.out.println("YOU SHOULD PLACE " + (p1.getBoardsize()/2 - 1 )+ " SHIPS");
+                System.out.println("********************************");
+                System.out.println();
                 System.out.println("BETTER BE CAREFUL NOT TO LET YOUR OPPONENT SEE ;D ");
                 System.out.println();
                 for (int i = 0; i <(p1.getBoardsize()/2)-1 ; i++) {
@@ -223,12 +238,12 @@ public  class Main {
             System.out.println();
             System.out.println();
 
-
+/*
             Board.printboard(p1.getShipboard().getShipboard());
             System.out.println();
             System.out.println();
             Board.printboard(p2.getShipboard().getShipboard());
-
+*/
             Game game = new Game() ;
             game.start(p1 , p2 );
 
