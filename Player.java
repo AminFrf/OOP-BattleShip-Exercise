@@ -37,9 +37,23 @@ public class Player {
             input = scanner.next();
             nvl = Coordinate.isValidCoordinate(input , opponent.getBoardsize());
         }//end of while
-        int[] xy = coor.coorxy(input);
-        int row = xy[1];
-        int col = xy[0];
+
+        int row = 0;
+        int col  = 0;
+        if(input.length()==2) {
+            int[] xy = coor.coorxy(input);
+            row = xy[1] ;
+            col = xy[0] ;
+        }//end of if
+
+        if (input.length()==3) {
+            int[] xy = coor.coorxy(input);
+            int row1 = xy[1];
+            int row2 = xy[2];
+            int col1 = xy[0];
+            col = col1 ;
+            row = row1*10 +  row2;
+        }//end of else if
 
         char[][] opponentShipboard = opponent.getShipboard().getShipboard();
         char[][] myTrackingBoard = this.attackingBoard.getShipboard();

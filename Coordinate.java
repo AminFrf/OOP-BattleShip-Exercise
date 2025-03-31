@@ -7,12 +7,34 @@ public class Coordinate {
 
     public static boolean isValidCoordinate(String input , int size) {
 
+
+
         if (input.length() != 2 && input.length() != 3) {
             return false;
         }//end of if
 
-        if(size<10 &&  input.length()==3){
+        if(size<=10 &&  input.length()==3){
             return false;
+        }//end of if
+
+        if (input.length()==2){
+            char[] xy = input.toCharArray();
+            int col = xy[0] - 'A';
+            int row = xy[1] - '0';
+            if(row<0 || row>=size ||col<0 || col>=size){
+                return false;
+            }//end of if
+        }//end of if
+
+        if(input.length()==3){
+            char[] xy = input.toCharArray();
+            int col = xy[0] - 'A';
+            int row1 = xy[1] - '0';
+            int row2 = xy[2] - '0';
+            int row = row1*10 + row2;
+            if(row<0 || row>=size || col<0 || col>=size){
+                return false;
+            }//end of if
         }//end of if
 
         if(input.length() == 3) {
@@ -40,7 +62,7 @@ public class Coordinate {
                 }//end of if
 
                 if(row1==1){
-                    if( col1>size || row2 > size ){
+                    if( col1>size ){
                         return false;
                     }//end of if
                 }//end of if
@@ -54,9 +76,7 @@ public class Coordinate {
 
             }//end of if
 
-          /*  if((col1 >= 'A' && col1 <= 'z') && (row1 =='1' || row1 <= '2') && (row2 >= '0' && row2 <= '9')){*/
                 return true;
-            /*}//end of if*/
         }//end of if
 
         if(input.length() == 2) {
@@ -65,7 +85,7 @@ public class Coordinate {
             int col1 = ch[0] - 'A';
             int row1 = ch[1] - '0';
 
-            if (size<10) {
+            if (size<=10) {
 
                 if(row1>size || col1 > size){
                     return false;
@@ -80,22 +100,26 @@ public class Coordinate {
                 }//end of if
 
             }//end of if
-            /*
-            if ((col1>size)||(row1>size) ){
-                return false;
-            }//end of if
-            char col = input.charAt(0);
-            char row = input.charAt(1);
-            return (col >= 'A' && col <= 'z') && (row >= '0'  && row <= '9');*/
+
         }//end of if
         return true;
     }//end of isvalidcoordinate
 
     public int [] coorxy(String input ) {
-        char[] ch = input.toCharArray();
-        int col =ch[0] - 'A';
-        int row =ch[1] - '0';
-        return  new int [] {col , row};
+        if(input.length()==2) {
+            char[] ch = input.toCharArray();
+            int col = ch[0] - 'A';
+            int row = ch[1] - '0';
+            return new int[]{col, row};
+        }
+        else if(input.length() == 3) {
+            char[] ch = input.toCharArray();
+            int col = ch[0] - 'A';
+            int row1 = ch[1] - '0';
+            int row2 =  ch[2] - '0';
+            return new int[]{col, row1 , row2};
+        }
+        return null;
     }//end of coorxy
 
 }//end of class coordinate
